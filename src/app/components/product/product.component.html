@@ -1,0 +1,27 @@
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-primary"
+  role="status"
+>
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+<table *ngIf="dataLoaded != false" class="table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Urun Adı</th>
+      <th>category Id</th>
+      <th>Urun Fiyatı</th>
+      <th>Stock Adedi</th>
+    </tr>
+  </thead>
+
+  <tr *ngFor="let product of products">
+    <td>{{ product.productId }}</td>
+    <td>{{ product.productName }}</td>
+    <td>{{ product.categoryId }}</td>
+    <td>{{ product.unitprice }}</td>
+    <td>{{ product.unitsInstock }}</td>
+  </tr>
+</table>

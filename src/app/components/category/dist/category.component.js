@@ -33,6 +33,14 @@ var CategoryComponent = /** @class */ (function () {
             return 'list-group-item';
         }
     };
+    CategoryComponent.prototype.getAllCategoryClass = function () {
+        if (!this.currentCategory) {
+            return 'list-group-item active';
+        }
+        else {
+            return 'list-group-item';
+        }
+    };
     CategoryComponent = __decorate([
         core_1.Component({
             selector: 'app-category',

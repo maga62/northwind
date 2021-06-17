@@ -11,10 +11,15 @@ var core_1 = require("@angular/core");
 var ProductService = /** @class */ (function () {
     function ProductService(httpClient) {
         this.httpClient = httpClient;
-        this.apiUrl = 'https://localhost:44376/api/products/getall';
+        this.apiUrl = 'https://localhost:44376/api/';
     }
     ProductService.prototype.getProducts = function () {
-        return this.httpClient.get(this.apiUrl);
+        var newPath = this.apiUrl + 'products/getall';
+        return this.httpClient.get(newPath);
+    };
+    ProductService.prototype.getProductsByCategory = function (categoryId) {
+        var newPath = this.apiUrl + 'products/getbycategory?categoryId=' + categoryId;
+        return this.httpClient.get(newPath);
     };
     ProductService = __decorate([
         core_1.Injectable({

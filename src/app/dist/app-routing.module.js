@@ -13,6 +13,7 @@ var product_component_1 = require("./components/product/product.component");
 var routes = [
     { path: '', pathMatch: 'full', component: product_component_1.ProductComponent },
     { path: 'products', component: product_component_1.ProductComponent },
+    { path: 'products/category/:categoryId', component: product_component_1.ProductComponent },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {

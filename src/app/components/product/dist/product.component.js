@@ -9,17 +9,35 @@ exports.__esModule = true;
 exports.ProductComponent = void 0;
 var core_1 = require("@angular/core");
 var ProductComponent = /** @class */ (function () {
-    function ProductComponent(productservice) {
+    function ProductComponent(productservice, activatedRoute) {
         this.productservice = productservice;
+        this.activatedRoute = activatedRoute;
         this.products = [];
         this.dataLoaded = false;
     }
     ProductComponent.prototype.ngOnInit = function () {
-        this.getProducts();
+        var _this = this;
+        this.activatedRoute.params.subscribe(function (params) {
+            if (params['categoryId']) {
+                _this.getProductsByCategory(params['categoryId']);
+            }
+            else {
+                _this.getProducts();
+            }
+        });
     };
     ProductComponent.prototype.getProducts = function () {
         var _this = this;
         this.productservice.getProducts().subscribe(function (response) {
+            _this.products = response.data;
+            _this.dataLoaded = true;
+        });
+    };
+    ProductComponent.prototype.getProductsByCategory = function (categoryId) {
+        var _this = this;
+        this.productservice
+            .getProductsByCategory(categoryId)
+            .subscribe(function (response) {
             _this.products = response.data;
             _this.dataLoaded = true;
         });

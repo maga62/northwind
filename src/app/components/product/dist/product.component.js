@@ -14,6 +14,7 @@ var ProductComponent = /** @class */ (function () {
         this.activatedRoute = activatedRoute;
         this.products = [];
         this.dataLoaded = false;
+        this.filterText = ' ';
     }
     ProductComponent.prototype.ngOnInit = function () {
         var _this = this;

@@ -9,9 +9,10 @@ exports.__esModule = true;
 exports.ProductComponent = void 0;
 var core_1 = require("@angular/core");
 var ProductComponent = /** @class */ (function () {
-    function ProductComponent(productservice, activatedRoute) {
+    function ProductComponent(productservice, activatedRoute, toastrService) {
         this.productservice = productservice;
         this.activatedRoute = activatedRoute;
+        this.toastrService = toastrService;
         this.products = [];
         this.dataLoaded = false;
         this.filterText = ' ';
@@ -42,6 +43,14 @@ var ProductComponent = /** @class */ (function () {
             _this.products = response.data;
             _this.dataLoaded = true;
         });
+    };
+    ProductComponent.prototype.addToCart = function (product) {
+        if (product.productId === 3) {
+            this.toastrService.error('bu Ürün sepete ekklenemez ! ');
+        }
+        else {
+            this.toastrService.success('sepete eklendi!', product.productName);
+        }
     };
     ProductComponent = __decorate([
         core_1.Component({
